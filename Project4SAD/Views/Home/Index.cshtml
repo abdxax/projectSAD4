@@ -1,0 +1,49 @@
+﻿@model Project4SAD.ViewModel.ViewModelIndex
+
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+   
+}
+
+<div class="text-center">
+    <a asp-action="ShowCar">Car Shopping @Model.carShoping</a>
+</div>
+@if (Model.pizzas.Any())
+{
+
+    <div class="container">
+        <div class="row justify-content-center">
+            @foreach (var i in Model.pizzas)
+            {
+
+                var res = @i.ImgPath.Split("\\");
+
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>@i.NameItem</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center">
+
+                                <img src="~/image/@res[9]" width="200" height="200" />
+                                <p>@i.Description</p>
+                                @Html.ActionLink("Buy", "getData", "Home", new { id = i.Id }, new { @class = "btn btn-info" })
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+}
+else
+{
+    <h1>Nothinf </h1>
+}

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Project4SAD.Models.CustomerOrder>
+@{
+    ViewData["Title"] = "Orders";
+    Layout = "_Layout";
+}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Order Number</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var i in Model)
+                    {
+                        <tr>
+                            <td>@i.Id</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

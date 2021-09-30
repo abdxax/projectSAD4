@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Project4SAD.Models.Pizza>
+@{
+    ViewData["Title"] = "Items";
+    Layout = "_Layout";
+}
+<div class="container">
+    <div class="row ">
+        <div class="text-center">
+            <a asp-action="AddItem" asp-controller="Admin">Add New Item </a>
+            <div class="col-md-10">
+                @if (Model.Any())
+                {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var i in Model)
+                        {
+                        <tr>
+                            <td>@i.NameItem</td>
+                            <td>@i.Description</td>
+                            <td>@i.price</td>
+                            <td>
+                                
+                                @Html.ActionLink("Delete", "Delete", "Admin", new { id = i.Id }, new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>
+                    }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
